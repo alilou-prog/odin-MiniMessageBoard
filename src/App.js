@@ -5,11 +5,13 @@ const app = express()
 // data 
 const messages = [
   {
+    id: 1,
     text: "Hi there!",
     user: "Amando",
     added: new Date()
   },
   {
+    id: 2, 
     text: "Hello World!",
     user: "Charles",
     added: new Date()
@@ -34,6 +36,8 @@ app.get("/", (req, res) => {
 const new_router = require('./routes/new')
 app.use("/new", new_router)
 
+const details_router = require("./routes/details")
+app.use("/details", details_router)
 
 // error handling
 app.use((req, res) => {

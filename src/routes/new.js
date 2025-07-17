@@ -1,4 +1,4 @@
-const {Router} = require('express')
+const { Router } = require('express')
 
 const new_router = Router()
 
@@ -8,7 +8,8 @@ new_router.get('/', (req, res) => {
 
 new_router.post('/', (req, res) => {
     const data = req.body;
-    req.app.get("messages").push({text: req.body["msg-text"], user: req.body["msg-user"], added: new Date()})
+    const messages = req.app.get("messages")
+    messages.push({ id: messages.at(-1).id + 1, text: req.body["msg-text"], user: req.body["msg-user"], added: new Date() })
     res.redirect("/")
 })
 
